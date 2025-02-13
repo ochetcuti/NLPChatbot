@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Type a message..." autofocus>
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="resetChat()">Reset</button>
+    </div>
+
+    <script>
+        function appendMessage(sender, message) {
+            let chatBox = document.getElementById("chat-box");
+            let newMessage = document.createElement("div");
+            newMessage.classList.add(sender);
+            newMessage.innerText = message;
+            chatBox.appendChild(newMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function sendMessage() {
+            let userInput = document.getElementById("user-input").value;
+            if (userInput.trim() === "") return;
+
+            appendMessage("user", "You: " + userInput);
+            document.getElementById("user-input").value = "";
+
+            fetch("/chat", {
+                method: "POST",
+                body: JSON.stringify({ message: userInput }),
+                headers: { "Content-Type": "application/json" }
+            })
+            .then(response => response.json())
+            .then(data => {
+                appendMessage("bot", "Chatbot: " + data.response);
+            });
+        }
+
+        function resetChat() {
+            fetch("/reset", { method: "POST" })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("chat-box").innerHTML = "";
+                appendMessage("bot", "Chatbot: " + data.response);
+            });
+        }
+    </script>
+</body>
+</html>
