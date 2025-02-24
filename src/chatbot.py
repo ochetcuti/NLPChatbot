@@ -2,6 +2,7 @@ import random
 
 class ChatbotResponseHandler:
     def __init__(self):
+
         self.responses = {
             "warmup": [
                 "Hello. How was your shift?",
@@ -40,7 +41,6 @@ class ChatbotResponseHandler:
             ]
         }
 
-        # Define low-context responses to detect
         self.low_context_responses = {
             "fine", "okay", "good", "not really", "the usual", "same as always", "nothing special"
         }
@@ -50,26 +50,22 @@ class ChatbotResponseHandler:
             "supportive", "closing", "exit"
         ]
 
-        self.conversation_step = 0  # Track conversation steps
-    
-    def get_response(self, user_input):
-        """Generate a chatbot response based on user input and conversation step."""
-        cleaned_input = user_input.lower().strip()
+        self.conversation_step = 0 
 
-        # If the response lacks context, re-prompt
-        if cleaned_input in self.low_context_responses:
-            return self.re_prompt()
+    def get_response(self, stress_level):
+        # lacks context, re-prompt (needs to be moved)
+        #if cleaned_input in self.low_context_responses:
+        #    return self.re_prompt()
 
-        # Proceed with normal conversation step
+        # normal conversation step
         if self.conversation_step < len(self.step_order):
             step = self.step_order[self.conversation_step]
             self.conversation_step += 1
             return random.choice(self.responses[step])
-        
+
         return "Alright, talk soon!"
 
     def re_prompt(self):
-        """Generate a follow-up question when user input lacks context."""
         re_prompts = [
             "Can you tell me more about that?",
             "I see. Would you say today was more demanding than usual?",
@@ -80,5 +76,7 @@ class ChatbotResponseHandler:
         return random.choice(re_prompts)
 
     def reset_conversation(self):
-        """Resets conversation flow to start fresh."""
         self.conversation_step = 0
+
+    def get_conversation_step(self):
+        return self.conversation_step
