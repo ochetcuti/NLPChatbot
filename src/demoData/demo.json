@@ -1,0 +1,50 @@
+{
+    "paramedic": {
+            "title": "A Paramedic After a Chaotic Shift",
+            "messages": [
+                "It was really busy, non-stop calls.",
+                "Yeah, we had a serious accident case that was tough.",
+                "Not really, we were too busy.",
+                "I listen to music on the way home.",
+                "Yeah, I put on a playlist after my shift.",
+                "No, I think I'm okay now.",
+                "Thanks."
+            ]
+        },
+    "doctor": {
+        "title": "A Doctor Handling a Difficult Case",
+        "messages": [
+            "Really busy, some difficult cases.",
+            "Yeah, I had a difficult conversation with a patient.",
+            "Briefly, but we had to move on quickly.",
+            "I try to leave work at work, but sometimes it sticks with me.",
+            "Yeah, I'll try to reset later.",
+            "No, I think I'm good.",
+            "Thanks, will do!"
+        ]
+    },
+    "nurse": {
+        "title": "A Nurse After an Overwhelming Shift",
+        "messages": [
+            "It's been a rough shift, we're understaffed.",
+            "Too many patients, not enough time.",
+            "Not really, I barely had time to eat.",
+            "I try to take a short walk when I can.",
+            "Yeah, for a few minutes.",
+            "No, I just need some sleep.",
+            "Thanks."
+        ]
+    },
+    "student": {
+        "title": "STUDENT / JUNIOR DOCTOR",
+        "messages": [
+            "It's been tough, I'm struggling to keep up with both.",
+            "Both, but especially revision. I just don't have enough time.",
+            "Not really, I feel guilty when I'm not studying.",
+            "I try to set timers to break revision into chunks, but I still feel behind.",
+            "Yeah, my friends are feeling the same, we try to keep each other motivated.",
+            "No, I think I just need to push through this week.",
+            "Thanks, I'll try!"
+        ]
+    }
+}

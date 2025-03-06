@@ -4,52 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='chatStyle.css') }}">
 </head>
-<body>
-    <div class="chat-container">
-        <div id="chat-box"></div>
-        <input type="text" id="user-input" placeholder="Type a message..." autofocus>
-        <button onclick="sendMessage()">Send</button>
-        <button onclick="resetChat()">Reset</button>
+<body>        
+    <div class="container-left">
+        <div class="box-container" id="boxContainer">
+            <h1 class="box-header"> Select a scenario to demostrate the Chatbot </h1>
+            <div class="box" onclick="initChat('paramedic'); resetMaincount();">Scenario 1: A Paramedic After a Chaotic Shift</div>
+            <div class="box" onclick="initChat('doctor'); resetMaincount();">Scenario 2: A Doctor Handling a Difficult Case</div>
+            <div class="box" onclick="initChat('nurse'); resetMaincount();">Scenario 3: A Nurse After an Overwhelming Shift</div>
+            <div class="box" onclick="initChat('student'); resetMaincount();">Scenario 4: STUDENT / JUNIOR DOCTOR</div>
+        </div>
     </div>
-
-    <script>
-        function appendMessage(sender, message) {
-            let chatBox = document.getElementById("chat-box");
-            let newMessage = document.createElement("div");
-            newMessage.classList.add(sender);
-            newMessage.innerText = message;
-            chatBox.appendChild(newMessage);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        function sendMessage() {
-            let userInput = document.getElementById("user-input").value;
-            if (userInput.trim() === "") return;
-
-            appendMessage("user", "You: " + userInput);
-            document.getElementById("user-input").value = "";
-
-            fetch("/chat", {
-                method: "POST",
-                body: JSON.stringify({ message: userInput }),
-                headers: { "Content-Type": "application/json" }
-            })
-            .then(response => response.json())
-            .then(data => {
-                appendMessage("bot", "Chatbot: " + data.response);
-            });
-        }
-
-        function resetChat() {
-            fetch("/reset", { method: "POST" })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("chat-box").innerHTML = "";
-                appendMessage("bot", "Chatbot: " + data.response);
-            });
-        }
-    </script>
+    <div class="container-right">
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-box-container" id="chatBox">
+                <div id="chat-box">
+                    <div id="chat-header">
+                        <div id="chat-icon">
+                            <img src="{{ url_for('static', filename='img/stressedParamedic.jpg') }}" alt="User Icon">
+                        </div>
+                        <div id="chat-info">
+                            <p id="chat-name">Username</p>
+                        </div>
+                    </div>
+                    <div id="chat-window">
+                        <div id="messages"></div>
+                        <span id="next-message" onclick="nextChat()">&#10162;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/annotate.js') }}"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() {annotateSteps()})</script>
 </body>
 </html>

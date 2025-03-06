@@ -2,10 +2,20 @@ from flask import Flask, render_template, request, jsonify
 from chatbot import ChatbotResponseHandler
 from preprocessor import TextPreprocessor
 from sentiment_analyser import SentimentAnalyser
+import json
+import os
 app = Flask(__name__)
 chatbot = ChatbotResponseHandler()
 preprocessor = TextPreprocessor()
 sentiment_analyser = SentimentAnalyser()
+
+def load_chat_data():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(script_dir, "demoData/demo.json")
+    with open(file_path, "r") as file:
+        return json.load(file)
+
+chat_data = load_chat_data()
 
 @app.route("/")
 def index():
@@ -27,7 +37,13 @@ def chat():
     #  stress level passed
     bot_response = chatbot.get_response(stress_level)
     
-    return jsonify({"response": bot_response})
+    return jsonify({"response": bot_response, "stressLevel": stress_level})
+
+@app.route("/chat/<scenario>")
+def get_chat(scenario):
+    if scenario in chat_data:
+        return jsonify(chat_data[scenario])
+    return jsonify({"error": "Scenario not found"}), 404
 
 @app.route("/reset", methods=["POST"])
 def reset():

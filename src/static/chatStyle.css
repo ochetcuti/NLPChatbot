@@ -1,0 +1,207 @@
+:root {
+    --send-bg: #0B93F6;
+    --send-color: white;
+    --receive-bg: #E5E5EA;
+    --receive-text: black;
+    --page-background: white;
+    --header-background: #f0f0f0;
+    --header-text-color: black;
+    --header-subtitle-color: gray;
+    --timestamp-color: gray;
+}
+
+/* body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    max-width: 450px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--page-background);
+} */
+
+#chat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-header {
+    display: flex;
+    align-items: center;
+    background-color: var(--header-background);
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 10px 10px 0 0;
+    flex-direction: column;
+}
+
+#chat-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover; 
+}
+
+#chat-info {
+}
+
+#chat-name {
+    font-size: 18px;
+    color: var(--header-text-color);
+    margin: 0;
+}
+
+#chat-name::after{
+    content: ' >';
+    color: lightgray;
+    font-size: 18px;
+}
+
+#chat-subtitle {
+    font-size: 14px;
+    color: var(--header-subtitle-color);
+    margin: 0;
+}
+
+.timestamp {
+    text-align: center;
+    color: var(--timestamp-color);
+    font-size: 14px;
+    margin: 10px 0;
+    line-height: 24px;
+    position: relative;
+    clear: left;
+}
+
+#chat-window p {
+    max-width: 50%;
+    word-wrap: break-word;
+    line-height: 24px;
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 25px;
+    clear: both;
+    margin: 5px;
+    opacity: 0; /* Start invisible */
+    transform: scale(0.9); /* Start smaller */
+    animation: pop-in 0.3s forwards; /* Apply animation */
+}
+
+@keyframes pop-in {
+    to {
+        opacity: 1; /* Fade in */
+        transform: scale(1); /* Scale to full size */
+    }
+}
+
+#chat-window p:before, #chat-window p:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 25px;
+}
+
+.send {
+    color: var(--send-color);
+    background: var(--send-bg);
+    float: right;
+    margin-right: 10px;
+}
+
+.send:before {
+    right: -7px;
+    width: 20px;
+    background-color: var(--send-bg);
+    border-bottom-left-radius: 16px 14px;
+}
+
+.send:after {
+    right: -26px;
+    width: 26px;
+    background-color: var(--page-background);
+    border-bottom-left-radius: 10px;
+}
+
+.receive {
+    background: var(--receive-bg);
+    color: var(--receive-text);
+    float: left;
+    margin-left: 10px;
+}
+
+.receive:before {
+    left: -7px;
+    width: 20px;
+    background-color: var(--receive-bg);
+    border-bottom-right-radius: 16px 14px;
+}
+
+.receive:after {
+    left: -26px;
+    width: 26px;
+    background-color: var(--page-background);
+    border-bottom-right-radius: 10px;
+}
+
+/* Hide the pseudo-elements for all but the last message in a group */
+#chat-window .send.consecutive::before, 
+#chat-window .send.consecutive::after,
+#chat-window .receive.consecutive::before, 
+#chat-window .receive.consecutive::after {
+    display: none;
+}
+
+/* Set margin to 1px for consecutive messages */
+#chat-window .send.consecutive, 
+#chat-window .receive.consecutive {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.no-top-margin {
+    margin-top: 1px !important;
+}
+
+#chat-window {
+    width: 100%;
+    /*height: 80vh; */
+    background-color: var(--page-background);
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-grow: 1;
+    align-items: center;
+}
+
+#messages {
+    width: 98%;
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* Firefox */
+}
+
+#messages::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+#messages::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Track color */
+    border-radius: 10px; /* Round the track */
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4); /* Thumb color */
+    border-radius: 10px; /* Round the thumb */
+    border: 2px solid rgba(0, 0, 0, 0.1); /* Border around the thumb */
+}
+
+#input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
