@@ -1,0 +1,3 @@
+[submodule "@evaluation"]
+	path = @evaluation
+	url = https://github.com/ochetcuti/NLPChatbot-validation
