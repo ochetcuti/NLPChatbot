@@ -1,0 +1,50 @@
+{
+    "paramedic": {
+            "title": "A Paramedic After a Chaotic Shift",
+            "image": "stressedParamedic.jpg",
+            "messages": [
+                "It was hectic but manageable lots of calls back to back.",
+                "We had a critical case that needed full attention, but we managed okay.",
+                "Didn't really get a break, but it was expected.",
+                "I usually relax with music on the way home, helps clear my head.",
+                "Yeah I put on a playlist and try to disconnect.",
+                "No I think I'm okay now just glad the shift is over."
+            ]
+        },
+    "doctor": {
+        "title": "A Doctor Handling a Difficult Case",
+        "image": "stressedDoctor.jpg",
+        "messages": [
+            "The shift was brutal emotionally and physically draining",
+            "One case really got to me it was heartbreaking",
+            "We had no time to process anything just move to the next emergency",
+            "Even now I can't stop thinking about some of the things I saw today",
+            "I'm trying to pull myself together but it's been relentless",
+            "No, I think I'm good."
+        ]
+    },
+    "nurse": {
+        "title": "A Nurse After an Overwhelming Shift",
+        "image": "stressedNurse.jpg",
+        "messages": [
+            "We were completely overwhelmed, not enough staff at all.",
+            "I felt helpless patients needed more than we could give.",
+            "I skipped lunch just to keep up, it was chaos",
+            "Tried stepping out for a moment but got called back in immediately.",
+            "No My legs ache and Im mentally wiped out",
+            "I just need some sleep."
+        ]
+    },
+    "student": {
+        "title": "A Medical Student Struggling to Balance Placement at Hospital and University",
+        "image": "stressedMedicalStudent.jpg",
+        "messages": [
+            "Im honestly drowning between placement and assignments.",
+            "revision is killing me I cant keep up.",
+            "I feel guilty for even taking breaks, theres too much to do.",
+            "Trying to manage my time better, but its still overwhelming",
+            "Chatting with friends helps a bit, were all in the same boat.",
+            "No, I think I just need to push through this week."
+        ]
+    }
+}

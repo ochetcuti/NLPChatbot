@@ -1,0 +1,3 @@
+*.pkl
+clean_env/
+__pycache__/

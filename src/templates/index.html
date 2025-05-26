@@ -11,10 +11,8 @@
     <div class="container-left">
         <div class="box-container" id="boxContainer">
             <h1 class="box-header"> Select a scenario to demostrate the Chatbot </h1>
-            <div class="box" onclick="initChat('paramedic'); resetMaincount();">Scenario 1: A Paramedic After a Chaotic Shift</div>
-            <div class="box" onclick="initChat('doctor'); resetMaincount();">Scenario 2: A Doctor Handling a Difficult Case</div>
-            <div class="box" onclick="initChat('nurse'); resetMaincount();">Scenario 3: A Nurse After an Overwhelming Shift</div>
-            <div class="box" onclick="initChat('student'); resetMaincount();">Scenario 4: STUDENT / JUNIOR DOCTOR</div>
+            <div id="freeform"></div>
+            <div id="scripted"></div>
         </div>
     </div>
     <div class="container-right">
@@ -31,14 +29,20 @@
                     </div>
                     <div id="chat-window">
                         <div id="messages"></div>
-                        <span id="next-message" onclick="nextChat()">&#10162;</span>
+                        <span id="play-button" style="display: none;" onclick="toggleAutoPlay()">&#x23F5;</span>
+                        <div id="input-area" style="display: none;">
+                            <input type="text" id="message-input" placeholder="Type a message">
+                            <button id="send-button">Send</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/shared.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripted_path.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/semantic_path.js') }}"></script>
     <script src="{{ url_for('static', filename='js/annotate.js') }}"></script>
-    <script>document.addEventListener('DOMContentLoaded', function() {annotateSteps()})</script>
+    <script>document.addEventListener('DOMContentLoaded', function() {annotateSteps(); loadScenarioBoxes(); loadSemanticScenarioBox();})</script>
 </body>
 </html>

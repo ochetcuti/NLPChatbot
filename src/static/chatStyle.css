@@ -1,26 +1,3 @@
-:root {
-    --send-bg: #0B93F6;
-    --send-color: white;
-    --receive-bg: #E5E5EA;
-    --receive-text: black;
-    --page-background: white;
-    --header-background: #f0f0f0;
-    --header-text-color: black;
-    --header-subtitle-color: gray;
-    --timestamp-color: gray;
-}
-
-/* body {
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 20px;
-    font-weight: normal;
-    max-width: 450px;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--page-background);
-} */
-
 #chat-box {
     display: flex;
     flex-direction: column;
@@ -41,9 +18,6 @@
     height: 50px;
     border-radius: 50%;
     object-fit: cover; 
-}
-
-#chat-info {
 }
 
 #chat-name {
@@ -83,15 +57,15 @@
     border-radius: 25px;
     clear: both;
     margin: 5px;
-    opacity: 0; /* Start invisible */
-    transform: scale(0.9); /* Start smaller */
-    animation: pop-in 0.3s forwards; /* Apply animation */
+    opacity: 0; 
+    transform: scale(0.9);
+    animation: pop-in 0.3s forwards;
 }
 
 @keyframes pop-in {
     to {
-        opacity: 1; /* Fade in */
-        transform: scale(1); /* Scale to full size */
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -144,28 +118,10 @@
     border-bottom-right-radius: 10px;
 }
 
-/* Hide the pseudo-elements for all but the last message in a group */
-#chat-window .send.consecutive::before, 
-#chat-window .send.consecutive::after,
-#chat-window .receive.consecutive::before, 
-#chat-window .receive.consecutive::after {
-    display: none;
-}
-
-/* Set margin to 1px for consecutive messages */
-#chat-window .send.consecutive, 
-#chat-window .receive.consecutive {
-    margin-top: 1px;
-    margin-bottom: 1px;
-}
-
-.no-top-margin {
-    margin-top: 1px !important;
-}
 
 #chat-window {
     width: 100%;
-    /*height: 80vh; */
+    height: 75vh;
     background-color: var(--page-background);
     border-radius: 0 0 10px 10px;
     display: flex;
@@ -179,29 +135,58 @@
     width: 98%;
     flex: 1;
     padding: 10px;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden; /* Disable horizontal scrolling */
+    overflow-y: auto;
+    overflow-x: hidden; 
     scrollbar-width: thin; /* Firefox */
-    scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* Firefox */
 }
 
 #messages::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    width: 8px; /* Width of scrollbar */
 }
 
-#messages::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1); /* Track color */
-    border-radius: 10px; /* Round the track */
-}
-
-#messages::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.4); /* Thumb color */
-    border-radius: 10px; /* Round the thumb */
-    border: 2px solid rgba(0, 0, 0, 0.1); /* Border around the thumb */
-}
 
 #input-area {
     display: flex;
+    margin-top: 3rem;
     padding: 10px;
     border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+#play-button{
+    font-size: 2.5rem;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--header-background);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    color: #000;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    margin-bottom: 20px;
+}
+
+#play-button:hover {
+    transform: scale(1.05);
+    background: #ccc;
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#send-button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: var(--send-bg);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
